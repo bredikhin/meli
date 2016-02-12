@@ -1,0 +1,18 @@
+{
+  "name": "meli",
+  "version": "1.0.0",
+  "description": "Menu icon day planning / note taking",
+  "main": "main.js",
+  "scripts": {
+    "pack": "electron-packager ./ meli --platform=darwin --arch=x64 --icon=./icons/meli.icns"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "menubar": "^3.0.0"
+  },
+  "devDependencies": {
+    "electron-packager": "^5.2.1",
+    "electron-prebuilt": "^0.36.7"
+  }
+}

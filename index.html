@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <style>
+      textarea {
+        position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+
+	font-size: 14px;
+
+        border: none;
+        overflow: auto;
+        outline: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="note"></textarea>
+  </body>
+  <script>
+    var note = document.getElementById('note');
+    var ipc = require('ipc');
+    ipc.on('textLoaded', function(res) {
+      note.value = res;
+    });
+    ipc.send('loadText');
+
+    note.oninput = function() {
+      ipc.send('saveText', note.value);
+    };
+
+    ipc.on('textSaved', function() {
+      console.log('Saved!');
+    });
+  </script>
+</html>
